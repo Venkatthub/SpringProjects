@@ -2,4 +2,4 @@
 
 * Dependency Injection with spring core
 * Annotation based configuration
-* Javab based configuration
+* Java based configuration
