@@ -1,7 +1,6 @@
 package com.vendingmachine;
 
 import java.util.Scanner;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -12,9 +11,9 @@ public class FrontClass {
 
 	public static Scanner scan = new Scanner(System.in);
 
-	static Services vendingService;
+	private static Services serviceconsumer;
 
-	static ApplicationContext context = new AnnotationConfigApplicationContext(IocContainer.class);
+	private static ApplicationContext context = new AnnotationConfigApplicationContext(IocContainer.class);
 
 	public static void main(String[] args) {
 
@@ -24,18 +23,18 @@ public class FrontClass {
 
 	public static void vendingMachine() {
 
-		try {
+		if (serviceconsumer != null) {
 
-			System.out.println("\n" + "You selected " + "\n" + vendingService);
+			System.out.println("\n" + "You selected " + "\n" + serviceconsumer);
 
 			System.out.println("\n" + "Please select quantity :");
 
-			vendingService.setQuantity(scan.nextInt());
+			serviceconsumer.setQuantity(scan.nextInt());
 
-			System.out.println("\n" + "Total amount to be paid :" + vendingService.getTotalAmount() + "\n"
+			System.out.println("\n" + "Total amount to be paid :" + serviceconsumer.getTotalAmount() + "\n"
 					+ "Please insert coins ");
 
-			while (vendingService.collectCoins(scan.nextDouble())) {
+			while (serviceconsumer.collectCoins(scan.nextDouble())) {
 
 				System.out.println("Coin added");
 
@@ -43,14 +42,13 @@ public class FrontClass {
 
 			System.out.println("\n" + "Please collect your Drink and Bill");
 
-			vendingService.printBill();
+			serviceconsumer.printBill();
 
-		} catch (Exception e) {
+		} else {
 
 			selectDrink();
 
 		}
-
 	}
 
 	public static void selectDrink() {
@@ -61,15 +59,15 @@ public class FrontClass {
 
 		if (choice == 1) {
 
-			vendingService = (ServiceConsumer) context.getBean("coke");
+			serviceconsumer = (ServiceConsumer) context.getBean("coke");
 
 		} else if (choice == 2) {
 
-			vendingService = (ServiceConsumer) context.getBean("pepsi");
+			serviceconsumer = (ServiceConsumer) context.getBean("pepsi");
 
 		} else if (choice == 3) {
 
-			vendingService = (ServiceConsumer) context.getBean("soda");
+			serviceconsumer = (ServiceConsumer) context.getBean("soda");
 
 		} else {
 

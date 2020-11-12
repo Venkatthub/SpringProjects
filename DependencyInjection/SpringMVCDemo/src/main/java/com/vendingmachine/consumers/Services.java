@@ -1,7 +1,5 @@
 
-
 package com.vendingmachine.consumers;
-
 
 public interface Services {
 

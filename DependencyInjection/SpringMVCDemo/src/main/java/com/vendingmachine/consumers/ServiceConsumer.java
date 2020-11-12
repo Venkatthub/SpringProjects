@@ -12,14 +12,10 @@ public class ServiceConsumer implements Services {
 	private int quantity;
 	private double amountReceived;
 
-	public ServiceConsumer() {
-	}
-
+	// constructor injection
 	@Autowired
 	public ServiceConsumer(Beverages drink) {
-
 		this.drink = drink;
-
 	}
 
 	@Override
