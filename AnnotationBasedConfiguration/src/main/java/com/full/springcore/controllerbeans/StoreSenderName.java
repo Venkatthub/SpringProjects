@@ -22,7 +22,7 @@ public class StoreSenderName {
 
 	public void storeSenderNames(String fromReceiptant) {
 
-		names.add(messenger.getFromReceiptent());
+		names.add(messenger.getFromName());
 	}
 
 	public void printName() {

@@ -4,7 +4,7 @@ import com.full.springcore.servicebeans.Service;
 
 public class Messenger {
 
-	private String fromReceiptent;
+	private String fromName;
 	private String[] toReceiptants;
 	private Service mailing;
 	private StoreSenderName storeSenders;
@@ -25,17 +25,17 @@ public class Messenger {
 
 	}
 
-	public String getFromReceiptent() {
+	public String getFromName() {
 
-		return fromReceiptent;
+		return fromName;
 
 	}
 
-	public void setFromReceiptent(String fromReceiptent) {
+	public void setFromName(String fromName) {
 
-		this.fromReceiptent = fromReceiptent;
+		this.fromName = fromName;
 
-		storeSenders.storeSenderNames(fromReceiptent);
+		storeSenders.storeSenderNames(fromName);
 
 	}
 
@@ -53,7 +53,7 @@ public class Messenger {
 
 	public void sendMessage(String message) {
 
-		mailing.sendMessage(fromReceiptent, toReceiptants, message);
+		mailing.sendMessage(fromName, toReceiptants, message);
 
 	}
 

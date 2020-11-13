@@ -18,7 +18,7 @@ public class User {
 
 		messenger = (Messenger) context.getBean("messenger");
 
-		messenger.setFromReceiptent("venkat");
+		messenger.setFromName("venkat");
 
 		messenger.setToReceiptants(new String[] { "akash", "francis" });
 
